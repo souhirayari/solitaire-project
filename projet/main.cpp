@@ -3,15 +3,13 @@
 #include <iostream>
 
 int main() {
-    int nbBilles;
-    std::string mode;
+    Board b;
 
-    std::cout << "Entrez le nombre de billes (max 36): ";
-    std::cin >> nbBilles;
+    int nbBilles = b.demanderNombre("Entrez le nombre de billes (max 36): ");
+    std::string mode;
     std::cout << "Entrez le mode (default ou random): ";
     std::cin >> mode;
 
-    Board b;
     b.initialiser(nbBilles, mode);
 
     int sourceLigne, sourceCol, destLigne, destCol;
@@ -19,13 +17,16 @@ int main() {
 
     while (continuer) {
         b.afficher();
-        std::cout << "Entrez ligne source, colonne source, ligne destination, colonne destination (ou -1 pour quitter) : ";
-        std::cin >> sourceLigne;
+        std::cout << "Entrez ligne source, colonne source, ligne destination, colonne destination (ou -1 pour quitter) :\n";
+
+        sourceLigne = b.demanderNombre("Ligne source : ");
         if (sourceLigne == -1) {
             continuer = false;
             break;
         }
-        std::cin >> sourceCol >> destLigne >> destCol;
+        sourceCol = b.demanderNombre("Colonne source : ");
+        destLigne = b.demanderNombre("Ligne destination : ");
+        destCol = b.demanderNombre("Colonne destination : ");
 
         if (b.mouvementValide(sourceLigne, sourceCol, destLigne, destCol)) {
             b.deplacer(sourceLigne, sourceCol, destLigne, destCol);

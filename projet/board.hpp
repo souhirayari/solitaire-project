@@ -21,6 +21,9 @@ public:
     void afficher() const;
     bool mouvementValide(int ligneSource, int colSource, int ligneDest, int colDest) const; // <-- ici très important
     bool deplacer(int ligneSource, int colSource, int ligneDest, int colDest);
+    int demanderNombre(const std::string& message); // <-- AJOUT ICI
+
+
 };
 
 #endif

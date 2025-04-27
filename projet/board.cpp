@@ -3,6 +3,8 @@
 #include <iostream>       // Pour afficher dans la console
 #include <cstdlib>        // Pour utiliser rand() et srand()
 #include <ctime>          // Pour initialiser srand avec l'heure actuelle
+#include <limits> // pour numeric_limits
+
 
 // Constructeur de la classe Board
 Board::Board()
@@ -94,6 +96,24 @@ void Board::afficher() const
         std::cout << "\n";  // Retour à la ligne après chaque ligne du plateau
     }
 }
+
+// accepter que des nombres
+int Board::demanderNombre(const std::string& message) {
+    int valeur;
+    while (true) {
+        std::cout << message;
+        std::cin >> valeur;
+
+        if (std::cin.fail()) {
+            std::cin.clear(); // Réparer cin
+            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); // Vider
+            std::cout << "Entrée invalide. Veuillez entrer un nombre entier.\n";
+        } else {
+            return valeur;
+        }
+    }
+}
+
 
 // verifier la validité de mouvement
 
