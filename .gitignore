@@ -1,0 +1,12 @@
+# Dossiers de compilation
+bin/
+obj/
+
+# Fichiers temporaires de Code::Blocks
+*.layout
+*.depend
+*.cbp.save
+
+# Fichiers de build
+*.o
+*.exe
